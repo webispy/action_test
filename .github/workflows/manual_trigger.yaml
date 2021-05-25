@@ -1,0 +1,15 @@
+name: Manual
+on:
+  workflow_dispatch:
+    inputs:
+      comment:
+        description: 'Comment'
+        required: false
+        default: ''
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First step on manual_trigger branch
+        run: echo "Comment ${{ github.event.inputs.comment }}"
