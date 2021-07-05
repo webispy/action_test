@@ -10,3 +10,9 @@ jobs:
     steps:
       - name: First step
         run: echo "Hello world"
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: File list
+        run: |
+          pwd
+          ls -l
