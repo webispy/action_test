@@ -1,0 +1,21 @@
+name: Manual
+on:
+  workflow_dispatch:
+    inputs:
+      comment:
+        description: 'Comment'
+        required: false
+        default: ''
+      user:
+        description: 'User'
+        required: true
+        default: ''
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First step
+        run: |
+          echo "Ok. ${{ github.event.inputs.comment }}"
+          echo "Request by ${{ github.event.inputs.user }}"
