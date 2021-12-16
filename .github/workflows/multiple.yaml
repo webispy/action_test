@@ -1,0 +1,17 @@
+name: Multiple_matrix
+on:
+  push:
+    branch:
+      - step2_matrix
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        myopt: [ opt1, opt2 ]
+    steps:
+      - name: Hello
+        run: echo "Hello Job1"
+      - name: Build
+        run: echo "Build using ${{ matrix.myopt }}"
