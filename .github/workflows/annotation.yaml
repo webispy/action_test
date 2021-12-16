@@ -14,6 +14,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Check
         run: |
-          ROW=`grep 'Hello' src/* -Rn`
+          ROW=`grep 'Hello' src/* -RHn`
+          echo $ROW
           IFS=':' read -r -a list <<< "$ROW"
+          echo $list[0]
+          echo $list[1]
           echo "::error file=${list[0]},line=${list[1]}::No more Hello"
