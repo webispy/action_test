@@ -1,0 +1,17 @@
+name: Multiple
+on:
+  push:
+    branch:
+      - step2
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello
+        run: echo "Hello Job1"
+  job2:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: World
+        run: echo "World Job2"
