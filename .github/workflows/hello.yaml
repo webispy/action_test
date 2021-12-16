@@ -12,7 +12,7 @@ jobs:
         run: echo "Hello world"
       - name: Check out repository code
         uses: actions/checkout@v2
-      - name: File list
-        run: |
-          pwd
-          ls -l
+      - name: Build
+        run: gcc src/hello.c -o hello
+      - name: Test
+        run: ./hello
