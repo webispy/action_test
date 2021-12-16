@@ -1,0 +1,17 @@
+name: Artifacts
+on:
+  push:
+    branch:
+      - step3
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate
+        run: echo "Hello" > /tmp/hello.txt
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: results
+          path: /tmp/hello.txt
