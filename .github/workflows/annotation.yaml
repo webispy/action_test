@@ -1,0 +1,19 @@
+name: Artifacts
+on:
+  pull_request:
+    branch:
+      - step4
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Check
+        run: |
+          ROW=`grep 'BUG' src/* -RHn`
+          echo $ROW
+          IFS=':' read file line dummy <<< "$ROW"
+          echo "File = $file"
+          echo "Line = $line"
+          echo "::error file=${file},line=${line}::BUG found!"
