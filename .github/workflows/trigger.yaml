@@ -16,3 +16,5 @@ jobs:
     steps:
       - name: First step
         run: echo "Triggered by ${{ github.event_name }}"
+      - name: Next step
+        run: echo "Ref is ${{ github.ref }}"
