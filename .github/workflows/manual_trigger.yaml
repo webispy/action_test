@@ -6,10 +6,16 @@ on:
         description: 'Comment'
         required: false
         default: ''
+      user:
+        description: 'User'
+        required: true
+        default: ''
 
 jobs:
-  hello:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: First step
-        run: echo "Ok. ${{ github.event.inputs.comment }}"
+        run: |
+          echo "Ok. ${{ github.event.inputs.comment }}"
+          echo "Request by ${{ github.event.inputs.user }}"
