@@ -19,3 +19,5 @@ jobs:
         run: |
           echo "Ok. ${{ github.event.inputs.comment }}"
           echo "Request by ${{ github.event.inputs.user }}"
+          echo "${{ github.event_name }}"
+          echo "${{ toJson(github.event) }}"
