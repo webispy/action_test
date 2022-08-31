@@ -21,3 +21,18 @@ jobs:
           echo "Request by ${{ github.event.inputs.user }}"
           echo "${{ github.event_name }}"
           echo "${{ toJson(github.event) }}"
+      - name: test
+        run: |
+          FILE=0cf8c0176e92e9b7a5850142eaff8afc6d637008080447f139e62cdb86d22923
+          wget http://archive.ubuntu.com/ubuntu/dists/jammy-updates/main/binary-amd64/by-hash/SHA256/$FILE
+          sha256sum $FILE
+          md5sum $FILE
+          hexdump -C -n 1024 $FILE
+          curl --verbose --output x http://archive.ubuntu.com/ubuntu/dists/jammy-updates/main/binary-amd64/by-hash/SHA256/$FILE
+          sha256sum x
+          md5sum x
+      - name: artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: file
+          path: 0cf8c0176e92e9b7a5850142eaff8afc6d637008080447f139e62cdb86d22923
